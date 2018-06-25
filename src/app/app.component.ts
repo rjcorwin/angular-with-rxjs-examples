@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,5 @@ export class AppComponent {
       setInterval(_ => observer.next(Math.floor((Math.random() * 10) + 1)), 1000)
     })
     this.title$.subscribe(newValue => this.title = newValue)
-
-
   }
 }
