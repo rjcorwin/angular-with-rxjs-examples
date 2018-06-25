@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { RandomNumberService } from './random-number.service'
 
 @Component({
   selector: 'app-root',
@@ -7,12 +7,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title$    
-  title
-  constructor() {
-    this.title$  = new Observable(observer => {
-      setInterval(_ => observer.next(Math.floor((Math.random() * 10) + 1)), 1000)
-    })
-    this.title$.subscribe(newValue => this.title = newValue)
+  randomNumber: number;
+  constructor(randomNumberService: RandomNumberService) {
+    randomNumberService.numberStream$.subscribe((newValue:number) => this.randomNumber = newValue)
   }
 }
